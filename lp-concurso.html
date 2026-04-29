@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concurso Público — Aqui Aprendo</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    :root {
+      --dominante: #6E2E8E;
+      --hero-txt: #FFFFFF;
+      --laranja: #F28B1E;
+      --preto: #0E0E0E;
+      --offwhite: #FFF8EF;
+      --branco: #FFFFFF;
+    }
+
+    /* NAV */
+    .nav {
+      background: var(--branco);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 0 80px;
+    }
+
+    .nav .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 72px;
+    }
+
+    .nav-back {
+      font-size: 14px;
+      color: #6B6B6B;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover {
+      color: var(--preto);
+    }
+
+    /* HERO */
+    .hero-lp {
+      background: var(--dominante);
+      padding: 100px 80px;
+      position: relative;
+      overflow: hidden;
+      min-height: 580px;
+    }
+
+    .hero-lp .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      color: var(--hero-txt);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+
+    .hero-lp h1 {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--hero-txt);
+      margin-bottom: 28px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero-lp-sub {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.8);
+      max-width: 560px;
+      margin-bottom: 44px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-hero {
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.2s;
+      border: none;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .btn-hero-primary {
+      background: var(--laranja);
+      color: var(--branco);
+    }
+
+    .btn-hero-outline {
+      background: transparent;
+      color: var(--hero-txt);
+      border: 1.5px solid var(--hero-txt);
+    }
+
+    .hero-stat {
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      color: var(--hero-txt);
+    }
+
+    .stat-value {
+      display: block;
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+
+    /* PARA QUEM É */
+    .sec-para-quem {
+      background: var(--offwhite);
+      padding: 96px 80px;
+    }
+
+    .sec-title {
+      font-size: 44px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 56px;
+      letter-spacing: -0.8px;
+      color: var(--preto);
+    }
+
+    .cards-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .card-perfil {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    .card-perfil-bar {
+      width: 40px;
+      height: 4px;
+      background: var(--dominante);
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .card-perfil p {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--preto);
+    }
+
+    /* O QUE VAI APRENDER */
+    .sec-modulos {
+      background: #0E0E0E;
+      padding: 96px 80px;
+    }
+
+    .sec-title-light {
+      color: var(--branco);
+    }
+
+    .modulos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .card-modulo {
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .modulo-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--dominante);
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .modulo-titulo {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--branco);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .modulo-desc {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+    }
+
+    /* JORNADA */
+    .sec-jornada {
+      background: #141414;
+      padding: 96px 80px;
+    }
+
+    .jornada-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .card-step {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 28px 24px;
+    }
+
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--dominante);
+      color: var(--branco);
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .step-titulo {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--branco);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.55;
+    }
+
+    /* DIFERENCIAIS */
+    .sec-diferenciais {
+      background: var(--offwhite);
+      padding: 96px 80px;
+    }
+
+    .diferenciais-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .diferencial-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .diferencial-item:last-child {
+      border-bottom: none;
+    }
+
+    .diferencial-bar {
+      width: 4px;
+      height: 44px;
+      background: var(--dominante);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .diferencial-txt {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--preto);
+      line-height: 1.4;
+    }
+
+    /* DEPOIMENTOS */
+    .sec-depoimentos {
+      background: #F0F0F0;
+      padding: 96px 80px;
+    }
+
+    .card-dep {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .dep-aspas {
+      font-size: 32px;
+      color: var(--dominante);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .dep-texto {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--preto);
+      margin-bottom: 24px;
+    }
+
+    .dep-autor {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--preto);
+    }
+
+    .dep-cargo {
+      font-size: 13px;
+      font-weight: 400;
+      color: #6B6B6B;
+      margin-top: 2px;
+    }
+
+    /* INVESTIMENTO */
+    .sec-invest {
+      background: #0E0E0E;
+      padding: 96px 80px;
+    }
+
+    .invest-card {
+      background: var(--offwhite);
+      border-radius: 20px;
+      border: 2px solid var(--dominante);
+      padding: 48px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .invest-price {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--preto);
+      text-align: center;
+      margin-bottom: 8px;
+      letter-spacing: -0.8px;
+    }
+
+    .invest-parcelas {
+      font-size: 15px;
+      color: #6B6B6B;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .invest-inclui-titulo {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--preto);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .invest-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .invest-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--preto);
+    }
+
+    .invest-list li::before {
+      content: '✓';
+      color: var(--dominante);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .btn-invest {
+      width: 100%;
+      padding: 18px 40px;
+      background: var(--laranja);
+      color: var(--branco);
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      transition: opacity 0.2s;
+    }
+
+    .btn-invest:hover {
+      opacity: 0.9;
+    }
+
+    /* FAQ */
+    .sec-faq {
+      background: var(--offwhite);
+      padding: 96px 80px;
+    }
+
+    .faq-list {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .faq-item {
+      background: var(--branco);
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--preto);
+      text-align: left;
+    }
+
+    .faq-chevron {
+      font-size: 22px;
+      color: var(--dominante);
+      font-weight: 400;
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      font-size: 14px;
+      color: #6B6B6B;
+      line-height: 1.65;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px;
+    }
+
+    .faq-a-inner {
+      padding: 0 28px 20px;
+    }
+
+    /* CTA FINAL */
+    .sec-cta-final {
+      background: var(--dominante);
+      padding: 96px 80px;
+      text-align: center;
+    }
+
+    .cta-final-headline {
+      font-size: 44px;
+      font-weight: 800;
+      color: var(--hero-txt);
+      line-height: 1.15;
+      margin-bottom: 44px;
+      letter-spacing: -0.8px;
+    }
+
+    .btn-cta-final {
+      padding: 18px 40px;
+      background: var(--laranja);
+      color: var(--branco);
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      transition: opacity 0.2s;
+    }
+
+    .btn-cta-final:hover {
+      opacity: 0.9;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--preto);
+      padding: 28px;
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .hero-lp .container {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stat {
+        display: none;
+      }
+
+      .hero-lp h1 {
+        font-size: 40px;
+      }
+
+      .cards-grid-3,
+      .modulos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .jornada-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <span class="nav-logo">Aqui<span>Aprendo</span></span>
+    <a href="index.html" class="nav-back">← Voltar à página principal</a>
+    <a href="#investimento" class="btn btn-laranja">Inscrever-se →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-lp">
+  <div class="container">
+    <div>
+      <div class="hero-badge">🎯 Concurso Público</div>
+      <h1>Menos acúmulo, mais aprovação.</h1>
+      <p class="hero-lp-sub">A trilha focada em questões e revisão espaçada pra quem não tem 8h por dia pra estudar — mas tem meta de passar.</p>
+      <div class="hero-ctas">
+        <a href="#investimento" class="btn-hero btn-hero-primary">Começar a estudar →</a>
+        <a href="#modulos" class="btn-hero btn-hero-outline">Ver edital atendido</a>
+      </div>
+    </div>
+    <div class="hero-stat">
+      <span class="stat-value">12.000+</span>
+      <span class="stat-label">questões comentadas<br>por banca</span>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section class="sec-para-quem">
+  <div class="container">
+    <h2 class="sec-title">Para quem é este curso</h2>
+    <div class="cards-grid-3">
+      <div class="card-perfil">
+        <div class="card-perfil-bar"></div>
+        <p>Concurseiros que acumulam PDFs e não rendem</p>
+      </div>
+      <div class="card-perfil">
+        <div class="card-perfil-bar"></div>
+        <p>Quem trabalha 8h e estuda só à noite</p>
+      </div>
+      <div class="card-perfil">
+        <div class="card-perfil-bar"></div>
+        <p>Aprovados que precisam manter ritmo para outra prova</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE VAI APRENDER -->
+<section class="sec-modulos" id="modulos">
+  <div class="container">
+    <h2 class="sec-title sec-title-light">Módulos do programa</h2>
+    <div class="modulos-grid">
+      <div class="card-modulo">
+        <div class="modulo-num">01</div>
+        <div class="modulo-titulo">Português para concurso</div>
+        <div class="modulo-desc">O que cai em 80% das bancas: CESPE, FGV, Vunesp.</div>
+      </div>
+      <div class="card-modulo">
+        <div class="modulo-num">02</div>
+        <div class="modulo-titulo">Raciocínio lógico-matemático</div>
+        <div class="modulo-desc">Atalhos que resolvem questões em menos de 2 minutos.</div>
+      </div>
+      <div class="card-modulo">
+        <div class="modulo-num">03</div>
+        <div class="modulo-titulo">Direito Constitucional &amp; Administrativo</div>
+        <div class="modulo-desc">Núcleo exigido em 90% dos editais federais.</div>
+      </div>
+      <div class="card-modulo">
+        <div class="modulo-num">04</div>
+        <div class="modulo-titulo">Informática essencial</div>
+        <div class="modulo-desc">Só o que realmente cai — sem enrolação.</div>
+      </div>
+      <div class="card-modulo">
+        <div class="modulo-num">05</div>
+        <div class="modulo-titulo">Atualidades com curadoria semanal</div>
+        <div class="modulo-desc">Curadoria focada, não notícia aleatória.</div>
+      </div>
+      <div class="card-modulo">
+        <div class="modulo-num">06</div>
+        <div class="modulo-titulo">Técnicas de prova</div>
+        <div class="modulo-desc">Gestão de tempo, chute técnico e ordem de resolução.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JORNADA -->
+<section class="sec-jornada">
+  <div class="container">
+    <h2 class="sec-title sec-title-light">Como é a jornada</h2>
+    <div class="jornada-grid">
+      <div class="card-step">
+        <div class="step-num">01</div>
+        <div class="step-titulo">Diagnóstico do edital</div>
+        <div class="step-desc">Mapeamento do edital-alvo + corte do que não cai.</div>
+      </div>
+      <div class="card-step">
+        <div class="step-num">02</div>
+        <div class="step-titulo">Bateria de questões</div>
+        <div class="step-desc">50 questões/dia em ciclos com relatório semanal.</div>
+      </div>
+      <div class="card-step">
+        <div class="step-num">03</div>
+        <div class="step-titulo">Revisão ativa</div>
+        <div class="step-desc">Spaced repetition automático dos erros.</div>
+      </div>
+      <div class="card-step">
+        <div class="step-num">04</div>
+        <div class="step-titulo">Simulados oficiais</div>
+        <div class="step-desc">Na banca certa, com correção em escala.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="sec-diferenciais">
+  <div class="container">
+    <h2 class="sec-title">Por que o Aqui Aprendo?</h2>
+    <div class="diferenciais-list">
+      <div class="diferencial-item">
+        <div class="diferencial-bar"></div>
+        <span class="diferencial-txt">📊&nbsp; Relatório semanal de desempenho por matéria</span>
+      </div>
+      <div class="diferencial-item">
+        <div class="diferencial-bar"></div>
+        <span class="diferencial-txt">🔁&nbsp; Revisão automática dos pontos fracos</span>
+      </div>
+      <div class="diferencial-item">
+        <div class="diferencial-bar"></div>
+        <span class="diferencial-txt">⏱️&nbsp; Cronograma que cabe em 2h/dia</span>
+      </div>
+      <div class="diferencial-item">
+        <div class="diferencial-bar"></div>
+        <span class="diferencial-txt">🎯&nbsp; 12.000+ questões comentadas por banca</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="sec-depoimentos">
+  <div class="container">
+    <h2 class="sec-title">O que dizem os alunos</h2>
+    <div class="cards-grid-3">
+      <div class="card-dep">
+        <div class="dep-aspas">"</div>
+        <p class="dep-texto">Aprovada em 7 meses estudando 2h por dia.</p>
+        <div class="dep-autor">Marina R.</div>
+        <div class="dep-cargo">TRF 3ª Região</div>
+      </div>
+      <div class="card-dep">
+        <div class="dep-aspas">"</div>
+        <p class="dep-texto">O relatório semanal me tirou do sofá.</p>
+        <div class="dep-autor">Carlos A.</div>
+        <div class="dep-cargo">Polícia Federal</div>
+      </div>
+      <div class="card-dep">
+        <div class="dep-aspas">"</div>
+        <p class="dep-texto">Passei na primeira tentativa.</p>
+        <div class="dep-autor">Fernanda O.</div>
+        <div class="dep-cargo">INSS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section class="sec-invest" id="investimento">
+  <div class="container">
+    <h2 class="sec-title sec-title-light">Investimento</h2>
+    <div class="invest-card">
+      <div class="invest-price">R$ [valor] à vista</div>
+      <div class="invest-parcelas">ou 12x de R$ [valor]</div>
+      <div class="invest-inclui-titulo">O que inclui</div>
+      <ul class="invest-list">
+        <li>Acesso por 18 meses</li>
+        <li>+200 videoaulas por área</li>
+        <li>12.000 questões comentadas por banca</li>
+        <li>Simulados mensais</li>
+        <li>Grupo fechado de dúvidas (respostas em 24h)</li>
+        <li>Relatório semanal de desempenho</li>
+      </ul>
+      <button class="btn-invest">Quero me preparar agora</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec-faq">
+  <div class="container">
+    <h2 class="sec-title">Perguntas frequentes</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">O curso atende qualquer banca? <span class="faq-chevron">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sim. O curso atende CESPE, FGV, Vunesp e outras bancas principais. Além disso, você recebe material específico para o edital que escolher.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Recebo atualização se sair edital novo? <span class="faq-chevron">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sim. Durante os 18 meses de acesso, você recebe todas as atualizações de material e ajustes conforme novos editais saem.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Tem material em PDF para imprimir? <span class="faq-chevron">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sim. Todos os resumos, listas de questões e materiais estão disponíveis em PDF para baixar e imprimir.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Quanto tempo de acesso? <span class="faq-chevron">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">O acesso é por 18 meses a partir da data de compra.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Como funciona o grupo de dúvidas? <span class="faq-chevron">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">É um grupo fechado no Telegram onde você pode fazer perguntas e recebe respostas de instrutores em até 24 horas.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="sec-cta-final">
+  <div class="container">
+    <h2 class="cta-final-headline">Seu próximo cargo público começa com um plano diferente.</h2>
+    <a href="#investimento" class="btn-cta-final">Comprar curso →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 Aqui Aprendo. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
