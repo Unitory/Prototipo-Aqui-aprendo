@@ -4,257 +4,2502 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Medicina — Aqui Aprendo</title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="base.css">
   <style>
     :root {
-      --dominante: #00A79A;
-      --hero-txt:  #FFFFFF;
+      --dominante: #D4558A;
+      --dominante-claro: #FCE8F1;
+      --dominante-medio: #F0BACE;
+      --dominante-escuro: #8B2A55;
+      --bg-escuro-1: #4A1030;
+      --bg-escuro-2: #5A1A3A;
+      --roxo: #6B4FA0;
+      --amarelo: #E8C13E;
+      --turquesa: #2BA89A;
+      --rosa: #D4558A;
+      --laranja: #E87C3E;
+      --preto: #1A1A2E;
+      --cinza-corpo: #555555;
+      --cinza-borda: #EBEBEB;
+      --branco: #FFFFFF;
+      --offwhite: #FDF2F7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--preto);
+      background: var(--branco);
+    }
+
+    /* UTILITÁRIOS */
+    .sec-label {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .sec-title {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--preto);
+      margin: 0 0 16px;
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+    }
+
+    .sec-title-light {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--branco);
+      margin: 0 0 16px;
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+    }
+
+    .sec-sub {
+      font-size: 16px;
+      color: var(--cinza-corpo);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* NAV */
+    .nav-lp {
+      background: var(--branco);
+      border-bottom: 1px solid var(--cinza-borda);
+      padding: 0 80px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-lp-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 40px;
+    }
+    .nav-logo-img { height: 80px; width: auto; display: block; }
+    .nav-lp-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-lp-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--cinza-corpo);
+      text-decoration: none;
+      transition: color 0.2s;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      padding: 0;
+    }
+    .nav-lp-link:hover { color: var(--dominante); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--branco);
+      border: 1px solid var(--cinza-borda);
+      border-radius: 16px;
+      padding: 8px;
+      min-width: 220px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu { display: flex; }
+    .nav-dropdown-item {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--cinza-corpo);
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-dropdown-item:hover {
+      background: var(--dominante-claro);
+      color: var(--dominante);
+    }
+    .nav-dropdown-item.ativo {
+      background: var(--dominante-claro);
+      color: var(--dominante);
+      font-weight: 700;
+    }
+    .nav-drop-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .nav-cart {
+      background: none; border: none; cursor: pointer;
+      color: var(--cinza-corpo); display: flex;
+      align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-cart:hover { color: var(--dominante); background: var(--dominante-claro); }
+    .btn-nav-outline {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 14px; font-weight: 600; color: var(--preto);
+      border: 1.5px solid var(--cinza-borda); border-radius: 50px;
+      padding: 10px 20px; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-nav-outline:hover { border-color: var(--dominante); color: var(--dominante); }
+    .btn-nav-primary {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 14px; font-weight: 600;
+      background: var(--dominante); color: var(--branco);
+      border-radius: 50px; padding: 10px 24px;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .btn-nav-primary:hover { opacity: 0.88; }
+
+    /* BARRA CATEGORIAS */
+    .barra-categorias {
+      background: var(--branco);
+      border-bottom: 1px solid var(--cinza-borda);
+      display: flex; align-items: center;
+      justify-content: center; padding: 20px 80px;
+    }
+
+    .categoria-item {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px; padding: 0 48px;
+      text-decoration: none; transition: color 0.2s;
+    }
+
+    .categoria-icon {
+      color: var(--cinza-corpo);
+      display: flex; align-items: center;
+      justify-content: center; transition: color 0.2s;
+    }
+
+    .categoria-label {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 13px; font-weight: 600;
+      color: var(--cinza-corpo); white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .categoria-item.ativa .categoria-icon,
+    .categoria-item:hover .categoria-icon { color: var(--dominante); }
+
+    .categoria-item.ativa .categoria-label,
+    .categoria-item:hover .categoria-label { color: var(--dominante); }
+
+    .categoria-divider {
+      width: 1px; height: 40px;
+      background: var(--cinza-borda); flex-shrink: 0;
+    }
+
+    /* HERO LP */
+    .hero-lp {
+      background: var(--dominante);
+      padding: 0 80px 96px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-lp-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .hero-meta-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 32px 0 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      margin-bottom: 56px;
+    }
+    .hero-meta-badge {
+      background: rgba(255,255,255,0.2);
+      color: var(--branco);
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 50px;
+    }
+    .hero-lp-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-lp-h1 {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 76px;
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--branco);
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+    }
+    .hero-lp-sub {
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.82);
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+    .hero-lp-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-hero-primary {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      background: var(--preto);
+      color: var(--branco);
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .btn-hero-primary:hover { opacity: 0.82; }
+    .btn-hero-ghost {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      background: rgba(255,255,255,0.15);
+      color: var(--branco);
+      padding: 16px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-hero-ghost:hover { background: rgba(255,255,255,0.22); }
+
+    /* ILUSTRAÇÃO HERO */
+    .hero-lp-ilustracao {
+      position: relative;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-ilustracao-circulo {
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.2);
+      position: absolute;
+    }
+    .hero-ilustracao-card {
+      position: absolute;
+      background: var(--branco);
+      border-radius: 14px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--preto);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      white-space: nowrap;
+    }
+    .hero-ilustracao-card span:first-child { font-size: 22px; }
+    .card-1 {
+      top: 10%;
+      left: 0;
+      animation: floatY 4s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+    .card-2 {
+      top: 38%;
+      right: -10px;
+      animation: floatY 4s ease-in-out infinite;
+      animation-delay: 0.8s;
+    }
+    .card-3 {
+      bottom: 10%;
+      left: 10%;
+      animation: floatY 4s ease-in-out infinite;
+      animation-delay: 1.6s;
+    }
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* BARRA VESTIBULARES */
+    .sec-vestibulares {
+      background: var(--branco);
+      padding: 48px 80px;
+      border-bottom: 1px solid var(--cinza-borda);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+    }
+    .sec-vest-label {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #BBBBBB;
+    }
+    .sec-vest-track {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .vest-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vest-logo {
+      height: 52px;
+      width: auto;
+      max-width: 140px;
+      object-fit: contain;
+      filter: grayscale(100%) opacity(0.3);
+      transition: filter 0.3s;
+    }
+    .vest-logo:hover { filter: grayscale(100%) opacity(0.6); }
+    .vest-logo-dark {
+      filter: grayscale(100%) brightness(8) opacity(0.35);
+    }
+    .vest-logo-dark:hover { filter: grayscale(100%) brightness(8) opacity(0.65); }
+    .vest-divider {
+      width: 1px;
+      height: 44px;
+      background: var(--cinza-borda);
+      flex-shrink: 0;
+    }
+    .sec-vest-nota {
+      font-size: 13px;
+      color: #CCCCCC;
+      font-style: italic;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      .hero-lp { padding: 0 24px 64px; }
+      .hero-lp-grid { grid-template-columns: 1fr; }
+      .hero-lp-ilustracao { display: none; }
+      .hero-lp-h1 { font-size: 44px; letter-spacing: -1px; }
+      .hero-meta-badges { padding: 24px 0 32px; margin-bottom: 40px; }
+      .barra-categorias { padding: 16px 24px; }
+      .categoria-item { padding: 0 20px; }
+      .nav-lp { padding: 0 24px; }
+      .nav-lp-links { display: none; }
+      .sec-vestibulares { padding: 40px 24px; gap: 24px; }
+      .vest-divider { display: none; }
+      .vest-logo { height: 36px; }
+      .sec-vest-track { gap: 28px; }
+    }
+
+    @media (max-width: 560px) {
+      .categoria-label { font-size: 11px; }
+      .categoria-item { padding: 0 12px; }
+    }
+
+    /* PARA QUEM É */
+    .sec-para-quem {
+      background: var(--dominante-claro);
+      padding: 96px 80px;
+    }
+
+    .sec-para-quem-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .para-quem-left h2 {
+      margin-bottom: 16px;
+    }
+
+    .para-quem-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .para-quem-card {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-left: 4px solid var(--dominante);
+      transition: transform 0.2s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .para-quem-card:hover { transform: translateX(4px); }
+    .para-quem-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--dominante-claro);
+      color: var(--dominante);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .para-quem-card:hover .para-quem-icon { background: var(--dominante-medio); }
+
+    .para-quem-card p {
+      font-size: 15px;
+      color: var(--preto);
+      line-height: 1.55;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .sec-para-quem { padding: 72px 40px; }
+      .sec-para-quem-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 560px) {
+      .sec-para-quem { padding: 64px 24px; }
+    }
+
+    /* MÓDULOS */
+    .sec-modulos {
+      background: var(--bg-escuro-1);
+      padding: 96px 80px;
+    }
+
+    .sec-modulos-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .modulos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card-modulo {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 28px;
+      transition: background 0.2s;
+    }
+
+    .card-modulo:hover { background: rgba(255,255,255,0.11); }
+
+    .modulo-num {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--dominante);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .modulo-titulo {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--branco);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .modulo-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .sec-modulos { padding: 72px 40px; }
+      .modulos-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .sec-modulos { padding: 64px 24px; }
+      .modulos-grid { grid-template-columns: 1fr; }
+    }
+
+    /* JORNADA */
+    .sec-jornada {
+      background: var(--dominante);
+      padding: 96px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .sec-jornada::before {
+      content: '';
+      position: absolute;
+      right: -100px;
+      top: -100px;
+      width: 400px;
+      height: 400px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .sec-jornada::after {
+      content: '';
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 300px;
+      height: 300px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .sec-jornada-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .sec-jornada-inner .sec-label {
+      color: rgba(0,0,0,0.45);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .sec-jornada-inner .sec-title {
+      color: var(--preto);
+      margin-bottom: 12px;
+    }
+    .sec-jornada-inner .sec-sub {
+      color: rgba(0,0,0,0.6);
+      margin-bottom: 56px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .jornada-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: left;
+    }
+    .jornada-step {
+      background: var(--branco);
+      border-radius: 20px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .jornada-step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+    .jornada-num {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--dominante);
+      letter-spacing: 1px;
+    }
+    .jornada-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--dominante-claro);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dominante);
+      flex-shrink: 0;
+    }
+    .jornada-titulo {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--preto);
+      line-height: 1.3;
+    }
+    .jornada-desc {
+      font-size: 13px;
+      color: var(--cinza-corpo);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 900px) {
+      .sec-jornada { padding: 72px 40px; }
+      .jornada-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .sec-jornada { padding: 64px 24px; }
+      .jornada-grid { grid-template-columns: 1fr; }
+    }
+
+    /* DIFERENCIAIS LP */
+    .sec-dif-lp {
+      background: var(--offwhite);
+      padding: 96px 80px;
+    }
+    .sec-dif-lp-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .dif-lp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .dif-lp-card {
+      background: var(--branco);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .dif-lp-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+    }
+    .dif-lp-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--dominante);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--branco);
+      flex-shrink: 0;
+    }
+    .dif-lp-content h4 {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--preto);
+      margin: 0 0 8px;
+      line-height: 1.3;
+    }
+    .dif-lp-content p {
+      font-size: 14px;
+      color: var(--cinza-corpo);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .sec-dif-lp { padding: 72px 40px; }
+      .dif-lp-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .sec-dif-lp { padding: 64px 24px; }
+    }
+
+    /* TEMAS CLÍNICOS */
+    .sec-temas {
+      background: var(--branco);
+      padding: 96px 80px;
+    }
+    .sec-temas-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .temas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .tema-card {
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--branco);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .tema-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.13);
+    }
+    .tema-img-wrapper {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    .tema-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .tema-card:hover .tema-img { transform: scale(1.05); }
+    .tema-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+    }
+    .tema-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--dominante);
+      color: var(--branco);
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 6px 14px;
+      border-radius: 50px;
+    }
+    .tema-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .tema-titulo {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--preto);
+      line-height: 1.35;
+      margin: 0;
+    }
+    .tema-desc {
+      font-size: 13px;
+      color: var(--cinza-corpo);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .tema-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+    .tema-dificuldade {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 50px;
+    }
+    .tema-media { background: #FFF3E0; color: #E87C3E; }
+    .tema-alta { background: var(--dominante-claro); color: var(--dominante); }
+    .tema-banca { font-size: 11px; color: #AAAAAA; font-weight: 500; }
+    .temas-cta { text-align: center; margin-top: 48px; }
+    .btn-temas {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dominante);
+      border: 2px solid var(--dominante);
+      border-radius: 50px;
+      padding: 14px 36px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-temas:hover { background: var(--dominante); color: var(--branco); }
+
+    @media (max-width: 900px) {
+      .sec-temas { padding: 72px 40px; }
+      .temas-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .sec-temas { padding: 64px 24px; }
+    }
+
+    /* DEPOIMENTOS LP */
+    .sec-depo-lp {
+      background: var(--dominante-claro);
+      padding: 96px 80px;
+    }
+
+    .sec-depo-lp-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .depo-lp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .depo-lp-card {
+      background: var(--branco);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .depo-lp-stars {
+      font-size: 16px;
+      color: var(--amarelo);
+      letter-spacing: 2px;
+    }
+
+    .depo-lp-texto {
+      font-size: 15px;
+      color: var(--cinza-corpo);
+      line-height: 1.7;
+      font-style: italic;
+      flex: 1;
+    }
+
+    .depo-lp-autor {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .depo-lp-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--dominante);
+      color: var(--branco);
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .depo-lp-nome {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--preto);
+      display: block;
+    }
+
+    .depo-lp-info {
+      font-size: 12px;
+      color: var(--cinza-corpo);
+      display: block;
+    }
+
+    /* INVESTIMENTO */
+    .sec-invest {
+      background: var(--dominante-claro);
+      padding: 96px 80px;
+      border-top: 1px solid var(--dominante-medio);
+    }
+
+    .sec-invest .sec-label,
+    .sec-invest .sec-title,
+    .sec-invest .sec-sub {
+      text-align: left;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .sec-invest-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 64px;
+      align-items: start;
+    }
+    .invest-beneficios {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .invest-beneficios li {
+      font-size: 13px;
+      color: var(--cinza-corpo);
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: var(--branco);
+      border-radius: 8px;
+      font-weight: 500;
+    }
+    .invest-beneficios li::before {
+      content: '✓';
+      color: var(--dominante);
+      font-weight: 700;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .invest-carrossel-wrapper {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
+      width: 100%;
+    }
+    .invest-carrossel {
+      display: flex;
+      width: 100%;
+      will-change: transform;
+    }
+    .invest-card {
+      min-width: 100%;
+      width: 100%;
+      flex-shrink: 0;
+      background: var(--branco);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(212,85,138,0.12);
+      border: 2px solid var(--cinza-borda);
+      display: flex;
+      flex-direction: column;
+    }
+    .invest-card-destaque {
+      border-color: var(--dominante);
+      box-shadow: 0 8px 40px rgba(212,85,138,0.25);
+    }
+    .invest-card-top {
+      background: var(--dominante);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-bottom: none;
+    }
+    .invest-badge {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.12);
+      padding: 5px 14px;
+      border-radius: 50px;
+      width: fit-content;
+      display: block;
+    }
+    .invest-badge-pop {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--dominante-escuro);
+      background: var(--amarelo);
+      padding: 5px 14px;
+      border-radius: 50px;
+      width: fit-content;
+      display: block;
+    }
+    .invest-preco {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--branco);
+      line-height: 1;
+      letter-spacing: -1.5px;
+    }
+    .invest-parcelas {
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 500;
+    }
+    .invest-card-divider {
+      height: 1px;
+      background: var(--cinza-borda);
+    }
+    .invest-card-lista {
+      list-style: none;
+      padding: 0 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .invest-card-lista li {
+      font-size: 14px;
+      color: var(--preto);
+      font-weight: 500;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-invest {
+      display: block;
+      margin: 8px 28px 12px;
+      padding: 15px 20px;
+      background: var(--dominante);
+      color: var(--branco);
+      border-radius: 50px;
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      transition: opacity 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-invest:hover { opacity: 0.88; }
+    .invest-garantia {
+      text-align: center;
+      font-size: 12px;
+      color: var(--cinza-corpo);
+      padding: 0 28px 24px;
+    }
+    .invest-curso-tag {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.15);
+      padding: 5px 14px;
+      border-radius: 50px;
+      width: fit-content;
+      display: block;
+    }
+    .invest-curso-tag-pop {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--dominante-escuro);
+      background: var(--amarelo);
+      padding: 5px 14px;
+      border-radius: 50px;
+      width: fit-content;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .invest-curso-nome {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--branco);
+      line-height: 1.2;
+      margin: 0;
+    }
+    .invest-curso-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .invest-card-grade {
+      flex: 1;
+    }
+    .invest-grade-titulo {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--cinza-corpo);
+      display: block;
+      margin-bottom: 12px;
+      padding: 20px 28px 0;
+    }
+    .invest-carrossel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px;
+    }
+    .invest-nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cinza-borda);
+      background: var(--branco);
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      color: var(--preto);
+      flex-shrink: 0;
+    }
+    .invest-nav-btn:hover {
+      border-color: var(--dominante);
+      color: var(--dominante);
+    }
+    .invest-nav-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .invest-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cinza-borda);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .invest-dot.ativo {
+      background: var(--dominante);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .sec-invest { padding: 72px 40px; }
+      .sec-invest-inner { grid-template-columns: 1fr; gap: 40px; }
+      .invest-carrossel-wrapper { position: static; }
+      .depo-lp-grid { grid-template-columns: 1fr; }
+      .sec-depo-lp { padding: 72px 40px; }
+    }
+
+    @media (max-width: 560px) {
+      .sec-invest { padding: 64px 24px; }
+      .sec-depo-lp { padding: 64px 24px; }
+    }
+
+    /* FAQ LP */
+    .sec-faq-lp {
+      background: var(--offwhite);
+      padding: 96px 80px;
+    }
+    .sec-faq-lp-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .faq-lp-left {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .sec-faq-lp .sec-label { text-align: left; }
+    .sec-faq-lp .sec-title {
+      text-align: left;
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--preto);
+      margin: 0;
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+      max-width: 100%;
+    }
+    .sec-faq-lp .sec-sub {
+      text-align: left;
+      font-size: 16px;
+      color: var(--cinza-corpo);
+      line-height: 1.6;
+      margin: 0;
+      max-width: 100%;
+    }
+    .btn-faq-cta {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--branco);
+      background: var(--dominante);
+      border-radius: 50px;
+      padding: 12px 28px;
+      text-decoration: none;
+      display: inline-block;
+      width: fit-content;
+      transition: opacity 0.2s;
+      margin-top: 8px;
+      align-self: flex-start;
+    }
+    .btn-faq-cta:hover { opacity: 0.88; }
+    .faq-lp-list { display: flex; flex-direction: column; }
+    .faq-lp-item { border-bottom: 1px solid var(--cinza-borda); }
+    .faq-lp-item:first-child { border-top: 1px solid var(--cinza-borda); }
+    .faq-lp-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--preto);
+      text-align: left;
+    }
+    .faq-lp-q span { flex: 1; }
+    .faq-lp-chevron {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cinza-borda);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cinza-corpo);
+      flex-shrink: 0;
+      transition: all 0.25s;
+    }
+    .faq-lp-item.open .faq-lp-chevron {
+      transform: rotate(180deg);
+      border-color: var(--dominante);
+      color: var(--dominante);
+    }
+    .faq-lp-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-lp-item.open .faq-lp-a { max-height: 200px; }
+    .faq-lp-a-inner {
+      padding: 0 0 20px;
+      font-size: 14px;
+      color: var(--cinza-corpo);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .sec-faq-lp { padding: 72px 40px; }
+      .sec-faq-lp-inner { grid-template-columns: 1fr; gap: 48px; }
+      .faq-lp-left { position: static; }
+      .sec-faq-lp .sec-title { font-size: 32px; }
+    }
+    @media (max-width: 560px) {
+      .sec-faq-lp { padding: 64px 24px; }
+    }
+
+    /* CTA FINAL LP */
+    .sec-cta-lp {
+      background: var(--bg-escuro-1);
+      padding: 120px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .sec-cta-lp-circle-1 {
+      position: absolute;
+      left: -120px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 420px;
+      height: 420px;
+      background: var(--dominante-escuro);
+      border-radius: 50%;
+      opacity: 0.5;
+      z-index: 0;
+    }
+    .sec-cta-lp-circle-2 {
+      position: absolute;
+      right: -80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 320px;
+      height: 320px;
+      background: rgba(212,85,138,0.15);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .sec-cta-lp-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .sec-cta-lp h2 {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--branco);
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin: 0;
+    }
+    .sec-cta-lp p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .cta-lp-btns {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 12px;
+    }
+    .btn-cta-lp {
+      background: var(--dominante);
+      color: var(--branco);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      display: inline-block;
+    }
+    .btn-cta-lp:hover { opacity: 0.88; }
+    .btn-cta-lp-ghost {
+      background: rgba(255,255,255,0.1);
+      color: var(--branco);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-cta-lp-ghost:hover { background: rgba(255,255,255,0.18); }
+
+    @media (max-width: 900px) {
+      .sec-cta-lp { padding: 80px 40px; }
+      .sec-cta-lp h2 { font-size: 36px; }
+    }
+    @media (max-width: 560px) {
+      .sec-cta-lp { padding: 72px 24px; }
+      .sec-cta-lp h2 { font-size: 32px; }
+      .cta-lp-btns { flex-direction: column; width: 100%; }
+      .btn-cta-lp, .btn-cta-lp-ghost { width: 100%; text-align: center; }
+    }
+
+    /* FOOTER LP */
+    .footer-lp {
+      background: var(--offwhite);
+      border-top: 1px solid var(--cinza-borda);
+    }
+    .footer-lp-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 72px 80px 0;
+    }
+    .footer-lp-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr 1.2fr;
+      gap: 64px;
+      margin-bottom: 56px;
+      align-items: start;
+    }
+    .footer-lp-marca {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .footer-lp-logo {
+      height: 120px;
+      width: auto;
+      display: block;
+      align-self: flex-start;
+    }
+    .footer-lp-tagline {
+      font-size: 14px;
+      color: var(--cinza-corpo);
+      line-height: 1.65;
+      max-width: 260px;
+      margin: 0;
+    }
+    .footer-lp-socials {
+      display: flex;
+      gap: 10px;
+    }
+    .footer-lp-social {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cinza-borda);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cinza-corpo);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .footer-lp-social:hover {
+      border-color: var(--dominante);
+      color: var(--dominante);
+      background: var(--dominante-claro);
+    }
+    .footer-lp-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .footer-lp-col-title {
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--preto);
+      margin: 0 0 20px;
+    }
+    .footer-lp-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-lp-links a {
+      font-size: 14px;
+      color: var(--cinza-corpo);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-lp-links a:hover { color: var(--dominante); }
+    .footer-lp-newsletter {
+      gap: 16px;
+    }
+    .footer-lp-newsletter-sub {
+      font-size: 14px;
+      color: var(--cinza-corpo);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .footer-lp-newsletter-form {
+      display: flex;
+      border-radius: 50px;
+      overflow: hidden;
+      border: 1.5px solid var(--cinza-borda);
+      background: var(--branco);
+    }
+    .footer-lp-newsletter-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--preto);
+      background: transparent;
+    }
+    .footer-lp-newsletter-btn {
+      background: var(--dominante);
+      color: var(--branco);
+      border: none;
+      padding: 12px 24px;
+      font-family: 'ClashDisplay-Variable', 'Clash Display', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .footer-lp-newsletter-btn:hover { opacity: 0.88; }
+    .footer-lp-bottom {
+      border-top: 1px solid var(--cinza-borda);
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-lp-bottom p {
+      font-size: 13px;
+      color: var(--cinza-corpo);
+    }
+    .footer-lp-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-lp-bottom-links a {
+      font-size: 13px;
+      color: var(--cinza-corpo);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-lp-bottom-links a:hover { color: var(--dominante); }
+
+    @media (max-width: 900px) {
+      .footer-lp-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+      .footer-lp-newsletter {
+        grid-column: 1 / -1;
+      }
+      .footer-lp-inner { padding: 56px 40px 0; }
+      .footer-lp-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+    @media (max-width: 560px) {
+      .footer-lp-grid { grid-template-columns: 1fr; }
+      .footer-lp-inner { padding: 48px 24px 0; }
+      .footer-lp-bottom-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    /* ALINHAMENTO CENTRAL — títulos e subtítulos de seção */
+    .sec-temas .sec-label,
+    .sec-temas .sec-title,
+    .sec-temas .sec-sub,
+    .sec-para-quem-left .sec-label,
+    .sec-modulos-inner .sec-label,
+    .sec-modulos-inner .sec-title-light,
+    .sec-modulos-inner .sec-sub,
+    .sec-dif-lp-inner .sec-label,
+    .sec-dif-lp-inner .sec-title,
+    .sec-dif-lp-inner .sec-sub,
+    .sec-invest .sec-label,
+    .sec-invest .sec-title,
+    .sec-invest .sec-sub,
+    .sec-vestibulares .sec-vest-label {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .sec-modulos-inner .sec-title-light,
+    .sec-dif-lp-inner .sec-title,
+    .sec-temas .sec-title {
+      max-width: 700px;
+    }
+
+    .sec-modulos-inner .sec-sub,
+    .sec-dif-lp-inner .sec-sub,
+    .sec-temas .sec-sub,
+    .sec-invest .sec-sub {
+      max-width: 560px;
+      display: block;
+    }
+
+    .para-quem-left .sec-label,
+    .para-quem-left .sec-title,
+    .para-quem-left .sec-sub {
+      text-align: left;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .para-quem-left .sec-title {
+      max-width: 100%;
+    }
+
+    .para-quem-left .sec-sub {
+      max-width: 100%;
     }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav">
-  <div class="container">
-    <span class="nav-logo">Aqui<span>Aprendo</span></span>
-    <a href="index.html" class="nav-back">← Voltar à página principal</a>
-    <a href="#investimento" class="btn btn-laranja">Inscrever-se →</a>
+<nav class="nav-lp">
+  <div class="nav-lp-inner">
+    <div class="nav-logo">
+      <img src="assets/logos/Logo-laranja.png" alt="Aqui Aprendo" class="nav-logo-img">
+    </div>
+    <div class="nav-lp-links">
+      <a href="index.html" class="nav-lp-link">Início</a>
+      <div class="nav-dropdown">
+        <button class="nav-lp-link nav-dropdown-btn">Cursos ▾</button>
+        <div class="nav-dropdown-menu">
+          <a href="lp-redacao.html" class="nav-dropdown-item">
+            <div class="nav-drop-icon" style="background: #FDF0E8; color: #E87C3E;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </div>
+            Redação Vestibular
+          </a>
+          <a href="lp-concurso.html" class="nav-dropdown-item">
+            <div class="nav-drop-icon" style="background: #E8F7F5; color: #2BA89A;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>
+              </svg>
+            </div>
+            Concurso Público
+          </a>
+          <a href="lp-medicina.html" class="nav-dropdown-item ativo">
+            <div class="nav-drop-icon" style="background: #FCE8F1; color: #D4558A;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            Medicina
+          </a>
+          <a href="lp-mentoria.html" class="nav-dropdown-item">
+            <div class="nav-drop-icon" style="background: #FDF7E3; color: #E8C13E;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            Mentoria
+          </a>
+        </div>
+      </div>
+      <a href="/sobre-nos" class="nav-lp-link">Sobre nós</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-cart" aria-label="Carrinho">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+      </button>
+      <a href="#" class="btn-nav-outline">Entrar</a>
+      <a href="#investimento" class="btn-nav-primary">Inscrever-se →</a>
+    </div>
   </div>
 </nav>
 
+<!-- BARRA DE CATEGORIAS -->
+<div class="barra-categorias">
+  <a href="lp-redacao.html" class="categoria-item">
+    <div class="categoria-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+      </svg>
+    </div>
+    <span class="categoria-label">Redação Vestibular</span>
+  </a>
+  <div class="categoria-divider"></div>
+  <a href="lp-concurso.html" class="categoria-item">
+    <div class="categoria-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>
+      </svg>
+    </div>
+    <span class="categoria-label">Concurso Público</span>
+  </a>
+  <div class="categoria-divider"></div>
+  <a href="lp-medicina.html" class="categoria-item ativa">
+    <div class="categoria-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+      </svg>
+    </div>
+    <span class="categoria-label">Medicina</span>
+  </a>
+  <div class="categoria-divider"></div>
+  <a href="lp-mentoria.html" class="categoria-item">
+    <div class="categoria-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    </div>
+    <span class="categoria-label">Mentoria</span>
+  </a>
+</div>
+
 <!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge">🩺 Medicina</div>
-      <h1>A medicina não cabe em decoreba.</h1>
-      <p class="hero-sub">Uma trilha pensada para vestibulares de medicina: conteúdo aprofundado, banco de questões comentadas e simulados cronometrados no padrão dos melhores vestibulares.</p>
-      <div class="hero-ctas">
-        <a href="#investimento" class="btn btn-laranja">Começar agora →</a>
-        <a href="#modulos" class="btn btn-outline-claro">Ver grade do curso</a>
+<section class="hero-lp">
+  <div class="hero-lp-inner">
+    <div class="hero-meta-badges">
+      <span class="hero-meta-badge">🩺 Trilha de Medicina</span>
+      <span class="hero-meta-badge">🏥 Linguagem clínica real</span>
+      <span class="hero-meta-badge">🎯 FMUSP · Unicamp · FAMERP · Revalida</span>
+    </div>
+    <div class="hero-lp-grid">
+      <div class="hero-lp-content">
+        <h1 class="hero-lp-h1">Medicina que você aprende pra passar, e pra exercer.</h1>
+        <p class="hero-lp-sub">Anatomia, fisiologia, semiologia e casos clínicos com linguagem de quem já está na residência — para você entrar preparado de verdade.</p>
+        <div class="hero-lp-ctas">
+          <a href="#investimento" class="btn-hero-primary">Quero começar na medicina →</a>
+          <a href="#modulos" class="btn-hero-ghost">Ver programa completo</a>
+        </div>
+      </div>
+      <div class="hero-lp-ilustracao">
+        <div class="hero-ilustracao-circulo"></div>
+        <div class="hero-ilustracao-card card-1">
+          <span>🩺</span>
+          <span>Aula enviada!</span>
+        </div>
+        <div class="hero-ilustracao-card card-2">
+          <span>💬</span>
+          <span>Tira-dúvidas ao vivo</span>
+        </div>
+        <div class="hero-ilustracao-card card-3">
+          <span>📈</span>
+          <span>Progresso na grade</span>
+        </div>
       </div>
     </div>
-    <div class="hero-stat">
-      <span class="stat-value">8.000+</span>
-      <span class="stat-label">questões comentadas<br>por tema</span>
-    </div>
   </div>
+</section>
+
+<!-- BARRA DE VESTIBULARES -->
+<section class="sec-vestibulares">
+  <p class="sec-vest-label">Preparação direcionada para</p>
+  <div class="sec-vest-track">
+
+    <div class="vest-item">
+      <img src="assets/logos/logo-enem.png" alt="ENEM" class="vest-logo">
+    </div>
+
+    <div class="vest-divider"></div>
+
+    <div class="vest-item">
+      <img src="assets/logos/logo-fuvest.jpg" alt="Fuvest" class="vest-logo">
+    </div>
+
+    <div class="vest-divider"></div>
+
+    <div class="vest-item">
+      <img src="assets/logos/logo-tjsp.png" alt="Unicamp" class="vest-logo vest-logo-dark">
+    </div>
+
+    <div class="vest-divider"></div>
+
+    <div class="vest-item">
+      <img src="assets/logos/logo-inss.png" alt="FAMERP" class="vest-logo">
+    </div>
+
+    <div class="vest-divider"></div>
+
+    <div class="vest-item">
+      <img src="assets/logos/logo-oab.png" alt="Revalida" class="vest-logo">
+    </div>
+
+  </div>
+  <p class="sec-vest-nota">e muitas outras faculdades e instituições</p>
 </section>
 
 <!-- PARA QUEM É -->
 <section class="sec-para-quem">
-  <div class="container">
-    <h2 class="sec-title">Para quem é este curso</h2>
-    <div class="cards-grid-3">
-      <div class="card-perfil">
-        <div class="card-perfil-bar"></div>
-        <p>Alunos do 3º ano com foco em medicina</p>
-      </div>
-      <div class="card-perfil">
-        <div class="card-perfil-bar"></div>
-        <p>Vestibulandos que já fizeram uma tentativa e querem virar o jogo</p>
-      </div>
-      <div class="card-perfil">
-        <div class="card-perfil-bar"></div>
-        <p>Quem precisa de aprofundamento em exatas e biológicas sem perder humanas</p>
-      </div>
+  <div class="sec-para-quem-inner">
+
+    <div class="para-quem-left">
+      <span class="sec-label" style="color: var(--dominante);">Para quem é</span>
+      <h2 class="sec-title">Esta trilha foi feita para você?</h2>
+      <p class="sec-sub">Conheça os perfis que mais evoluem com a trilha de Medicina.</p>
     </div>
+
+    <div class="para-quem-cards">
+
+      <div class="para-quem-card">
+        <div class="para-quem-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <p>Vestibulandos que prestam FMUSP, Unicamp ou FAMERP e precisam ir além do cursinho padrão</p>
+      </div>
+
+      <div class="para-quem-card">
+        <div class="para-quem-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6"/><path d="M9 12h6"/><path d="M9 15h4"/>
+          </svg>
+        </div>
+        <p>Graduandos nos primeiros ciclos que querem consolidar a base clínica antes das disciplinas avançadas</p>
+      </div>
+
+      <div class="para-quem-card">
+        <div class="para-quem-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+          </svg>
+        </div>
+        <p>Médicos formados no exterior que se preparam para o Revalida e precisam de revisão estruturada</p>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
-<!-- O QUE VAI APRENDER -->
+<!-- MÓDULOS -->
 <section class="sec-modulos" id="modulos">
-  <div class="container">
-    <h2 class="sec-title sec-title-light">O que você vai aprender</h2>
+  <div class="sec-modulos-inner">
+    <span class="sec-label" style="color: var(--dominante);">O que você vai aprender</span>
+    <h2 class="sec-title-light">Programa completo da trilha</h2>
+    <p class="sec-sub" style="color: rgba(255,255,255,0.65); margin-bottom: 56px;">Conteúdo estruturado com rigor clínico — da base anatômica à prática à beira do leito.</p>
     <div class="modulos-grid">
+
       <div class="card-modulo">
         <div class="modulo-num">01</div>
-        <div class="modulo-titulo">Biologia celular e fisiologia</div>
-        <div class="modulo-desc">O que realmente cai em FUVEST, UNICAMP e UNIFESP.</div>
+        <div class="modulo-titulo">Anatomia Aplicada</div>
+        <div class="modulo-desc">Estruturas essenciais com correlação clínica — do que você precisa conhecer de verdade para a prática.</div>
       </div>
+
       <div class="card-modulo">
         <div class="modulo-num">02</div>
-        <div class="modulo-titulo">Química orgânica e bioquímica</div>
-        <div class="modulo-desc">Foco em aplicações clínicas.</div>
+        <div class="modulo-titulo">Fisiologia e Fisiopatologia</div>
+        <div class="modulo-desc">Mecanismos normais e alterados que explicam sinais e sintomas — base para raciocínio diagnóstico sólido.</div>
       </div>
+
       <div class="card-modulo">
         <div class="modulo-num">03</div>
-        <div class="modulo-titulo">Física aplicada à medicina</div>
-        <div class="modulo-desc">Ótica, fluidos e termodinâmica com contexto clínico.</div>
+        <div class="modulo-titulo">Semiologia Clínica</div>
+        <div class="modulo-desc">Anamnese, exame físico e interpretação de achados — do jeito que o preceptor cobra na enfermaria.</div>
       </div>
+
       <div class="card-modulo">
         <div class="modulo-num">04</div>
-        <div class="modulo-titulo">Matemática direcionada</div>
-        <div class="modulo-desc">Os tópicos que aparecem nas provas de medicina.</div>
+        <div class="modulo-titulo">Farmacologia Essencial</div>
+        <div class="modulo-desc">Grupos farmacológicos, mecanismos de ação e interações que mais caem em prova e na rotina clínica.</div>
       </div>
+
       <div class="card-modulo">
         <div class="modulo-num">05</div>
-        <div class="modulo-titulo">Humanidades + atualidades em saúde</div>
-        <div class="modulo-desc">Ética médica, SUS e bioética.</div>
+        <div class="modulo-titulo">Casos Clínicos Comentados</div>
+        <div class="modulo-desc">Vinhetas clínicas resolvidas passo a passo — com raciocínio diagnóstico e conduta detalhados.</div>
       </div>
+
       <div class="card-modulo">
         <div class="modulo-num">06</div>
-        <div class="modulo-titulo">Redação com viés biomédico</div>
-        <div class="modulo-desc">Como enquadrar temas de saúde em qualquer proposta.</div>
+        <div class="modulo-titulo">Tira-dúvidas ao Vivo</div>
+        <div class="modulo-desc">Sessões semanais com preceptor para revisão de casos, dúvidas e simulação de situações reais.</div>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- JORNADA -->
 <section class="sec-jornada">
-  <div class="container">
-    <h2 class="sec-title sec-title-light">Como é a jornada</h2>
+  <div class="sec-jornada-inner">
+    <span class="sec-label" style="color: rgba(255,255,255,0.6);">Jornada</span>
+    <h2 class="sec-title" style="color: var(--branco);">Como é a sua jornada</h2>
+    <p class="sec-sub" style="color: rgba(255,255,255,0.75); margin-bottom: 56px;">Do primeiro módulo ao raciocínio clínico consolidado — cada etapa com propósito.</p>
     <div class="jornada-grid">
-      <div class="card-step">
-        <div class="step-num">01</div>
-        <div class="step-titulo">Trilha diagnóstica</div>
-        <div class="step-desc">Identificamos onde você está e o gap até a aprovação.</div>
+
+      <div class="jornada-step">
+        <div class="jornada-num">01</div>
+        <div class="jornada-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6"/><path d="M9 12h6"/><path d="M9 15h4"/>
+          </svg>
+        </div>
+        <h4 class="jornada-titulo">Estude a base teórica</h4>
+        <p class="jornada-desc">Videoaulas de anatomia, fisiologia e farmacologia com linguagem clínica direta — sem decoreba inútil.</p>
       </div>
-      <div class="card-step">
-        <div class="step-num">02</div>
-        <div class="step-titulo">Aulas + resolução guiada</div>
-        <div class="step-desc">Teoria enxuta + questão logo em seguida.</div>
+
+      <div class="jornada-step">
+        <div class="jornada-num">02</div>
+        <div class="jornada-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <h4 class="jornada-titulo">Treine com casos clínicos</h4>
+        <p class="jornada-desc">Resolva vinhetas comentadas e aplique o raciocínio diagnóstico logo depois de cada módulo teórico.</p>
       </div>
-      <div class="card-step">
-        <div class="step-num">03</div>
-        <div class="step-titulo">Simulados cronometrados</div>
-        <div class="step-desc">Réplicas de FUVEST, UNICAMP e UNIFESP.</div>
+
+      <div class="jornada-step">
+        <div class="jornada-num">03</div>
+        <div class="jornada-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <h4 class="jornada-titulo">Tire dúvidas ao vivo</h4>
+        <p class="jornada-desc">Participe das sessões semanais com preceptor e esclareça pontos do conteúdo e da prática clínica.</p>
       </div>
-      <div class="card-step">
-        <div class="step-num">04</div>
-        <div class="step-titulo">Revisão ativa</div>
-        <div class="step-desc">Sprint de 60 dias antes da prova.</div>
+
+      <div class="jornada-step">
+        <div class="jornada-num">04</div>
+        <div class="jornada-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+            <polyline points="16 7 22 7 22 13"/>
+          </svg>
+        </div>
+        <h4 class="jornada-titulo">Chegue preparado</h4>
+        <p class="jornada-desc">Com base sólida, você entra na faculdade — ou no internato — sabendo raciocinar clinicamente de verdade.</p>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- DIFERENCIAIS -->
-<section class="sec-diferenciais">
-  <div class="container">
-    <h2 class="sec-title">Por que o Aqui Aprendo?</h2>
-    <div class="diferenciais-list">
-      <div class="diferencial-item">
-        <div class="diferencial-bar"></div>
-        <span class="diferencial-txt">🧬&nbsp; Foco em vestibulares de medicina — não é curso genérico</span>
+<section class="sec-dif-lp">
+  <div class="sec-dif-lp-inner">
+    <span class="sec-label" style="color: var(--dominante);">Diferenciais</span>
+    <h2 class="sec-title">Por que a nossa trilha de Medicina é diferente?</h2>
+    <p class="sec-sub" style="margin-bottom: 56px;">Conteúdo com rigor clínico real — não uma coleção de slides de vestibular.</p>
+    <div class="dif-lp-grid">
+
+      <div class="dif-lp-card">
+        <div class="dif-lp-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6"/><path d="M9 12h6"/><path d="M9 15h4"/>
+          </svg>
+        </div>
+        <div class="dif-lp-content">
+          <h4>Currículo alinhado à grade médica</h4>
+          <p>Estrutura idêntica à das principais faculdades — você já chega sabendo o que vai ver no ciclo básico.</p>
+        </div>
       </div>
-      <div class="diferencial-item">
-        <div class="diferencial-bar"></div>
-        <span class="diferencial-txt">📊&nbsp; 8.000+ questões separadas por tema e vestibular</span>
+
+      <div class="dif-lp-card">
+        <div class="dif-lp-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="dif-lp-content">
+          <h4>Linguagem clínica desde o início</h4>
+          <p>Sem floreio acadêmico. Você aprende como um preceptor ensina — direto, com correlação prática.</p>
+        </div>
       </div>
-      <div class="diferencial-item">
-        <div class="diferencial-bar"></div>
-        <span class="diferencial-txt">🩺&nbsp; Conteúdo com aplicação clínica real</span>
+
+      <div class="dif-lp-card">
+        <div class="dif-lp-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <div class="dif-lp-content">
+          <h4>Tira-dúvidas semanal ao vivo</h4>
+          <p>Sessões com preceptor para resolver casos, discutir condutas e tirar dúvidas que o material não respondeu.</p>
+        </div>
       </div>
-      <div class="diferencial-item">
-        <div class="diferencial-bar"></div>
-        <span class="diferencial-txt">🎯&nbsp; Simulados no padrão exato das bancas-alvo</span>
+
+      <div class="dif-lp-card">
+        <div class="dif-lp-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+            <polyline points="16 7 22 7 22 13"/>
+          </svg>
+        </div>
+        <div class="dif-lp-content">
+          <h4>Progresso visível na grade</h4>
+          <p>Acompanhe sua evolução por módulo — você sabe exatamente onde está e o quanto falta.</p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- DEPOIMENTOS -->
-<section class="sec-depoimentos">
-  <div class="container">
-    <h2 class="sec-title">O que dizem os alunos</h2>
-    <div class="cards-grid-3">
-      <div class="card-dep">
-        <div class="dep-aspas">"</div>
-        <p class="dep-texto">Aprovada em Medicina USP em 1 ano de curso.</p>
-        <div class="dep-autor">Julia M.</div>
-        <div class="dep-cargo">FUVEST 2025</div>
+<!-- TEMAS CLÍNICOS -->
+<section class="sec-temas">
+  <div class="sec-temas-inner">
+    <span class="sec-label" style="color: var(--dominante);">Casos em destaque</span>
+    <h2 class="sec-title">Aprenda com casos reais</h2>
+    <p class="sec-sub" style="margin-bottom: 56px;">Casos clínicos comentados com raciocínio diagnóstico e conduta — como na residência.</p>
+    <div class="temas-grid">
+
+      <div class="tema-card">
+        <div class="tema-img-wrapper">
+          <img src="assets/redação1.jpg" alt="Cardiologia" class="tema-img">
+          <div class="tema-overlay"></div>
+          <span class="tema-tag">Cardiologia</span>
+        </div>
+        <div class="tema-body">
+          <h4 class="tema-titulo">Homem, 58 anos, dor torácica irradiada e sudorese fria — como conduzir?</h4>
+          <p class="tema-desc">Abordagem de síndrome coronariana aguda: diagnóstico diferencial, ECG e conduta inicial na emergência.</p>
+          <div class="tema-footer">
+            <span class="tema-dificuldade tema-media">Nível médio</span>
+            <span class="tema-banca">FMUSP · Revalida</span>
+          </div>
+        </div>
       </div>
-      <div class="card-dep">
-        <div class="dep-aspas">"</div>
-        <p class="dep-texto">Os simulados eram parecidos com a prova real. Assustadoramente.</p>
-        <div class="dep-autor">Rafael S.</div>
-        <div class="dep-cargo">FUVEST 2025</div>
+
+      <div class="tema-card">
+        <div class="tema-img-wrapper">
+          <img src="assets/redação2.jpg" alt="Neurologia" class="tema-img">
+          <div class="tema-overlay"></div>
+          <span class="tema-tag">Neurologia</span>
+        </div>
+        <div class="tema-body">
+          <h4 class="tema-titulo">Paciente com afasia súbita e desvio de rima: AVC isquêmico ou hemorrágico?</h4>
+          <p class="tema-desc">Raciocínio clínico para diferenciação, uso da janela terapêutica e indicação de trombólise.</p>
+          <div class="tema-footer">
+            <span class="tema-dificuldade tema-alta">Nível alto</span>
+            <span class="tema-banca">Unicamp · Revalida</span>
+          </div>
+        </div>
       </div>
-      <div class="card-dep">
-        <div class="dep-aspas">"</div>
-        <p class="dep-texto">Saí de 2ª fase sem chances para aprovação em UNIFESP.</p>
-        <div class="dep-autor">Beatriz N.</div>
-        <div class="dep-cargo">UNIFESP 2026</div>
+
+      <div class="tema-card">
+        <div class="tema-img-wrapper">
+          <img src="assets/redação3.jpg" alt="Pediatria" class="tema-img">
+          <div class="tema-overlay"></div>
+          <span class="tema-tag">Pediatria</span>
+        </div>
+        <div class="tema-body">
+          <h4 class="tema-titulo">Criança de 2 anos com febre alta, manchas petequiais e rigidez de nuca</h4>
+          <p class="tema-desc">Suspeita de meningite bacteriana: coleta de LCR, antibioticoterapia empírica e cuidados na UTI pediátrica.</p>
+          <div class="tema-footer">
+            <span class="tema-dificuldade tema-alta">Nível alto</span>
+            <span class="tema-banca">FAMERP · Revalida</span>
+          </div>
+        </div>
       </div>
+
+    </div>
+    <div class="temas-cta">
+      <a href="#investimento" class="btn-temas">Ver todos os casos disponíveis →</a>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS — oculto até ter conteúdo real -->
+<section class="sec-depo-lp" style="display: none;">
+  <div class="sec-depo-lp-inner">
+    <span class="sec-label" style="color: var(--dominante);">Depoimentos</span>
+    <h2 class="sec-title">O que dizem nossos alunos</h2>
+    <div class="depo-lp-grid">
+
+      <div class="depo-lp-card">
+        <div class="depo-lp-stars">★★★★★</div>
+        <p class="depo-lp-texto">"[PLACEHOLDER — depoimento real]"</p>
+        <div class="depo-lp-autor">
+          <div class="depo-lp-avatar">A</div>
+          <div>
+            <span class="depo-lp-nome">[Nome]</span>
+            <span class="depo-lp-info">[Faculdade / Programa]</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-lp-card">
+        <div class="depo-lp-stars">★★★★★</div>
+        <p class="depo-lp-texto">"[PLACEHOLDER — depoimento real]"</p>
+        <div class="depo-lp-autor">
+          <div class="depo-lp-avatar">B</div>
+          <div>
+            <span class="depo-lp-nome">[Nome]</span>
+            <span class="depo-lp-info">[Faculdade / Programa]</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-lp-card">
+        <div class="depo-lp-stars">★★★★★</div>
+        <p class="depo-lp-texto">"[PLACEHOLDER — depoimento real]"</p>
+        <div class="depo-lp-autor">
+          <div class="depo-lp-avatar">C</div>
+          <div>
+            <span class="depo-lp-nome">[Nome]</span>
+            <span class="depo-lp-info">[Faculdade / Programa]</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- INVESTIMENTO -->
 <section class="sec-invest" id="investimento">
-  <div class="container">
-    <h2 class="sec-title sec-title-light">Investimento</h2>
-    <div class="invest-card">
-      <div class="invest-price">R$ [valor] à vista</div>
-      <div class="invest-parcelas">ou 12x de R$ [valor]</div>
-      <div class="invest-inclui-titulo">O que inclui</div>
-      <ul class="invest-list">
-        <li>Acesso por 18 meses</li>
-        <li>+150 videoaulas</li>
-        <li>8.000 questões comentadas por tema</li>
-        <li>6 simulados cronometrados (FUVEST, UNICAMP, UNIFESP)</li>
-        <li>Correção de 10 redações temáticas de saúde</li>
-        <li>Certificado de conclusão</li>
+  <div class="sec-invest-inner">
+
+    <div class="invest-left">
+      <span class="sec-label" style="color: var(--dominante);">Investimento</span>
+      <h2 class="sec-title">Escolha sua entrada na medicina.</h2>
+      <p class="sec-sub" style="margin-bottom: 32px;">Do módulo de base ao programa completo com acompanhamento individual — acesse o nível certo para onde você está.</p>
+      <ul class="invest-beneficios">
+        <li>Videoaulas por módulo com linguagem clínica real</li>
+        <li>Banco de casos clínicos comentados</li>
+        <li>Sessões semanais de tira-dúvidas ao vivo</li>
+        <li>Simulados por especialidade com gabarito comentado</li>
+        <li>Grupo fechado com preceptores e colegas</li>
       </ul>
-      <a href="#" class="btn btn-laranja btn-lg invest-cta">Quero minha vaga em medicina</a>
     </div>
+
+    <div class="invest-carrossel-wrapper">
+      <div class="invest-carrossel">
+
+        <div class="invest-card">
+          <div class="invest-card-top">
+            <div class="invest-curso-tag">Iniciante</div>
+            <h3 class="invest-curso-nome">Bases Clínicas</h3>
+            <p class="invest-curso-desc">Anatomia, fisiologia e semiologia — o alicerce que toda a medicina exige.</p>
+            <div class="invest-preco">R$ 247</div>
+            <div class="invest-parcelas">ou 6x de R$ 43,67</div>
+          </div>
+          <div class="invest-card-divider"></div>
+          <div class="invest-card-grade">
+            <span class="invest-grade-titulo">O que inclui</span>
+            <ul class="invest-card-lista">
+              <li>✓ 16 videoaulas de base clínica</li>
+              <li>✓ 10 casos clínicos comentados</li>
+              <li>✓ Acesso ao tira-dúvidas semanal</li>
+              <li>✓ Acesso por 4 meses</li>
+              <li>✓ Grupo de estudos</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-invest">Começar agora →</a>
+          <p class="invest-garantia">🔒 Pagamento seguro · Acesso imediato</p>
+        </div>
+
+        <div class="invest-card invest-card-destaque">
+          <div class="invest-card-top">
+            <div class="invest-curso-tag-pop">⭐ Mais completo</div>
+            <div class="invest-curso-tag">Intermediário</div>
+            <h3 class="invest-curso-nome">Medicina Integrada</h3>
+            <p class="invest-curso-desc">Programa completo da base ao raciocínio clínico — para quem quer dominar de verdade.</p>
+            <div class="invest-preco">R$ 547</div>
+            <div class="invest-parcelas">ou 12x de R$ 51,65</div>
+          </div>
+          <div class="invest-card-divider"></div>
+          <div class="invest-card-grade">
+            <span class="invest-grade-titulo">O que inclui</span>
+            <ul class="invest-card-lista">
+              <li>✓ 40 videoaulas por especialidade</li>
+              <li>✓ 35 casos clínicos comentados</li>
+              <li>✓ Farmacologia essencial completa</li>
+              <li>✓ Simulados mensais com gabarito</li>
+              <li>✓ Acesso por 12 meses</li>
+              <li>✓ Grupo VIP com preceptores</li>
+              <li>✓ Certificado de conclusão</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-invest">Quero este programa →</a>
+          <p class="invest-garantia">🔒 Pagamento seguro · Acesso imediato</p>
+        </div>
+
+        <div class="invest-card">
+          <div class="invest-card-top">
+            <div class="invest-curso-tag">Intensivo</div>
+            <h3 class="invest-curso-nome">Sprint de Provas</h3>
+            <p class="invest-curso-desc">6 semanas de revisão focada para vestibular de medicina ou Revalida — com o que mais cai.</p>
+            <div class="invest-preco">R$ 397</div>
+            <div class="invest-parcelas">ou 6x de R$ 70,33</div>
+          </div>
+          <div class="invest-card-divider"></div>
+          <div class="invest-card-grade">
+            <span class="invest-grade-titulo">O que inclui</span>
+            <ul class="invest-card-lista">
+              <li>✓ Cronograma semanal de revisão</li>
+              <li>✓ 20 casos clínicos de alta complexidade</li>
+              <li>✓ 3 simulados cronometrados</li>
+              <li>✓ Banco de temas prováveis por banca</li>
+              <li>✓ Acesso por 3 meses</li>
+              <li>✓ Suporte prioritário</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-invest">Começar agora →</a>
+          <p class="invest-garantia">🔒 Pagamento seguro · Acesso imediato</p>
+        </div>
+
+        <div class="invest-card">
+          <div class="invest-card-top">
+            <div class="invest-curso-tag">Premium</div>
+            <h3 class="invest-curso-nome">Residência Ready</h3>
+            <p class="invest-curso-desc">Para quem quer a residência — acompanhamento individual, simulações clínicas e mentoria.</p>
+            <div class="invest-preco">R$ 997</div>
+            <div class="invest-parcelas">ou 12x de R$ 94,25</div>
+          </div>
+          <div class="invest-card-divider"></div>
+          <div class="invest-card-grade">
+            <span class="invest-grade-titulo">O que inclui</span>
+            <ul class="invest-card-lista">
+              <li>✓ Todo o conteúdo do Medicina Integrada</li>
+              <li>✓ 3 sessões 1:1 com preceptor</li>
+              <li>✓ Simulados ilimitados</li>
+              <li>✓ Casos clínicos com feedback individual</li>
+              <li>✓ Acesso vitalício</li>
+              <li>✓ Certificado de conclusão</li>
+              <li>✓ Grupo exclusivo de residência</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-invest">Quero o programa completo →</a>
+          <p class="invest-garantia">🔒 Pagamento seguro · Acesso imediato</p>
+        </div>
+
+      </div>
+
+      <div class="invest-carrossel-nav">
+        <button class="invest-nav-btn" id="prev-invest">←</button>
+        <div class="invest-nav-dots">
+          <div class="invest-dot ativo"></div>
+          <div class="invest-dot"></div>
+          <div class="invest-dot"></div>
+          <div class="invest-dot"></div>
+        </div>
+        <button class="invest-nav-btn" id="next-invest">→</button>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="sec-faq">
-  <div class="container">
-    <h2 class="sec-title">Perguntas frequentes</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q">O curso serve para qualquer vestibular de medicina? <span class="faq-chevron">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">O foco é em FUVEST, UNICAMP e UNIFESP, mas o conteúdo cobre a maioria dos vestibulares de medicina.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Tem preparatório para a 2ª fase? <span class="faq-chevron">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Sim, os simulados e a correção de redações são voltados para a 2ª fase dos principais vestibulares.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Quanto tempo de acesso? <span class="faq-chevron">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">18 meses a partir da data da compra.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Tem aulas ao vivo? <span class="faq-chevron">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">O curso é 100% gravado, com aulas disponíveis a qualquer hora.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Qual a carga horária semanal sugerida? <span class="faq-chevron">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Recomendamos entre 10 e 15 horas semanais para melhor aproveitamento.</div></div>
+<section class="sec-faq-lp" id="faq">
+  <div class="sec-faq-lp-inner">
+
+    <div class="faq-lp-left">
+      <span class="sec-label" style="color: var(--dominante);">FAQ</span>
+      <h2 class="sec-title">Ficou com alguma dúvida?</h2>
+      <p class="sec-sub">As perguntas mais comuns sobre a trilha de Medicina.</p>
+      <a href="#investimento" class="btn-faq-cta">Ver programas →</a>
+    </div>
+
+    <div class="faq-lp-right">
+      <div class="faq-lp-list">
+
+        <div class="faq-lp-item">
+          <button class="faq-lp-q">
+            <span>Preciso já estar na faculdade para fazer a trilha?</span>
+            <div class="faq-lp-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-lp-a">
+            <div class="faq-lp-a-inner">Não. A trilha é indicada tanto para vestibulandos que prestam medicina quanto para calouros do ciclo básico e médicos que preparam o Revalida. O nível de entrada é adaptável.</div>
+          </div>
+        </div>
+
+        <div class="faq-lp-item">
+          <button class="faq-lp-q">
+            <span>O conteúdo serve para o Revalida?</span>
+            <div class="faq-lp-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-lp-a">
+            <div class="faq-lp-a-inner">Sim. Os módulos de semiologia, casos clínicos e farmacologia são especialmente úteis para o Revalida. O programa Sprint de Provas tem trilha específica para o exame.</div>
+          </div>
+        </div>
+
+        <div class="faq-lp-item">
+          <button class="faq-lp-q">
+            <span>As sessões de tira-dúvidas ao vivo são gravadas?</span>
+            <div class="faq-lp-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-lp-a">
+            <div class="faq-lp-a-inner">Sim. Todas as sessões ao vivo ficam disponíveis na plataforma para revisão. Você pode assinar quando não puder participar ao vivo sem perder o conteúdo.</div>
+          </div>
+        </div>
+
+        <div class="faq-lp-item">
+          <button class="faq-lp-q">
+            <span>Qual a diferença entre Medicina Integrada e Sprint de Provas?</span>
+            <div class="faq-lp-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-lp-a">
+            <div class="faq-lp-a-inner">Medicina Integrada é o programa completo, ideal para quem está construindo a base do zero ou quer consolidar o ciclo básico. Sprint de Provas é intensivo de revisão para quem já tem base e precisa de foco em prova — seja vestibular ou Revalida.</div>
+          </div>
+        </div>
+
+        <div class="faq-lp-item">
+          <button class="faq-lp-q">
+            <span>Como funciona o acesso à plataforma após o pagamento?</span>
+            <div class="faq-lp-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-lp-a">
+            <div class="faq-lp-a-inner">O acesso é liberado imediatamente após a confirmação do pagamento. Você recebe e-mail com login e pode começar no mesmo instante — sem espera e sem instalação.</div>
+          </div>
+        </div>
+
       </div>
     </div>
+
   </div>
 </section>
 
 <!-- CTA FINAL -->
-<section class="sec-cta-final">
-  <div class="container">
-    <h2 class="cta-final-headline">A medicina é a carreira. O começo é aqui.</h2>
-    <a href="#investimento" class="btn btn-laranja btn-lg">Comprar curso →</a>
+<section class="sec-cta-lp">
+  <div class="sec-cta-lp-circle-1"></div>
+  <div class="sec-cta-lp-circle-2"></div>
+  <div class="sec-cta-lp-content">
+    <span class="sec-label" style="color: rgba(255,255,255,0.5); text-align: center;">Medicina</span>
+    <h2>A medicina que você aprende aqui é a medicina que você vai exercer.</h2>
+    <p>Comece com base sólida — e chegue na residência sabendo raciocinar clinicamente.</p>
+    <div class="cta-lp-btns">
+      <a href="#investimento" class="btn-cta-lp">Quero começar agora →</a>
+      <a href="#faq" class="btn-cta-lp-ghost">Ver dúvidas frequentes</a>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <p>© 2026 Aqui Aprendo. Todos os direitos reservados.</p>
+<footer class="footer-lp">
+  <div class="footer-lp-inner">
+    <div class="footer-lp-grid">
+
+      <div class="footer-lp-marca">
+        <img src="assets/logos/Logo-laranja.png" alt="Aqui Aprendo" class="footer-lp-logo">
+        <p class="footer-lp-tagline">Uma nova forma de aprender — encontre sua trilha e evolua com direção.</p>
+        <div class="footer-lp-socials">
+          <a href="#" class="footer-lp-social" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="#" class="footer-lp-social" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" class="footer-lp-social" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-lp-col">
+        <h5 class="footer-lp-col-title">Menu</h5>
+        <ul class="footer-lp-links">
+          <li><a href="lp-redacao.html">Redação Vestibular</a></li>
+          <li><a href="lp-concurso.html">Concurso Público</a></li>
+          <li><a href="lp-medicina.html">Medicina</a></li>
+          <li><a href="lp-mentoria.html">Mentoria</a></li>
+          <li><a href="index.html#como-funciona">Como funciona</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="/sobre-nos">Sobre nós</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-lp-col footer-lp-newsletter">
+        <h5 class="footer-lp-col-title">Fique por dentro!</h5>
+        <p class="footer-lp-newsletter-sub">Novidades, dicas de estudo e conteúdos exclusivos direto no seu e-mail.</p>
+        <div class="footer-lp-newsletter-form">
+          <input type="email" placeholder="Seu e-mail" class="footer-lp-newsletter-input">
+          <button class="footer-lp-newsletter-btn">Inscrever</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-lp-bottom">
+      <p>© 2026 Aqui Aprendo. Todos os direitos reservados.</p>
+      <div class="footer-lp-bottom-links">
+        <a href="/terms-and-condition">Termos & Condições</a>
+        <a href="/privacy-policy">Política de Privacidade</a>
+        <a href="/cookie-policy">Cookies</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script>
-  document.querySelectorAll('.faq-q').forEach(btn => {
+  // FAQ LP
+  document.querySelectorAll('.faq-lp-q').forEach(btn => {
     btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
+      const item = btn.closest('.faq-lp-item');
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      document.querySelectorAll('.faq-lp-item').forEach(i => i.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  // Carrossel investimento
+  (function() {
+    const carrossel = document.querySelector('.invest-carrossel');
+    const dots = document.querySelectorAll('.invest-dot');
+    const total = document.querySelectorAll('.invest-card').length;
+    let atual = 0;
+
+    function irPara(index) {
+      if (index < 0) index = total - 1;
+      if (index >= total) index = 0;
+      atual = index;
+      carrossel.style.transform = `translateX(-${atual * 100}%)`;
+      carrossel.style.transition = 'transform 0.4s ease';
+      dots.forEach((d, i) => d.classList.toggle('ativo', i === atual));
+    }
+
+    document.getElementById('next-invest')
+      ?.addEventListener('click', () => irPara(atual + 1));
+    document.getElementById('prev-invest')
+      ?.addEventListener('click', () => irPara(atual - 1));
+    dots.forEach((dot, i) =>
+      dot.addEventListener('click', () => irPara(i)));
+
+    irPara(0);
+  })();
 </script>
+
 </body>
 </html>
